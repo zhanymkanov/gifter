@@ -1,0 +1,4 @@
+django-allauth
+dj_database_url
+psycopg2-binary
+python-decouple
