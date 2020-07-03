@@ -12,5 +12,5 @@ class Category(SeoModel):
         verbose_name = "Category"
         verbose_name_plural = "Categories"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name

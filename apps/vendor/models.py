@@ -9,5 +9,5 @@ class Vendor(models.Model):
     short_description = models.TextField(max_length=300, blank=True)
     manager = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
