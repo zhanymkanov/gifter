@@ -4,5 +4,6 @@ isort
 autoflake
 flake8
 pytest
+pytest-django
 pytest-cov
 pytest-flake8
