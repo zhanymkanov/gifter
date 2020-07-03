@@ -7,22 +7,30 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('seo_title', models.CharField(blank=True, max_length=70, null=True)),
-                ('seo_description', models.CharField(blank=True, max_length=300, null=True)),
-                ('name', models.CharField(max_length=64, unique=True)),
-                ('slug', models.SlugField(max_length=64, unique=True)),
-                ('is_active', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("seo_title", models.CharField(blank=True, max_length=70, null=True)),
+                (
+                    "seo_description",
+                    models.CharField(blank=True, max_length=300, null=True),
+                ),
+                ("name", models.CharField(max_length=64, unique=True)),
+                ("slug", models.SlugField(max_length=64, unique=True)),
+                ("is_active", models.BooleanField(default=True)),
             ],
-            options={
-                'abstract': False,
-            },
+            options={"abstract": False},
         ),
     ]
