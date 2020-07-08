@@ -3,3 +3,4 @@ djangorestframework
 dj_database_url
 psycopg2-binary
 python-decouple
+django-versatileimagefield
