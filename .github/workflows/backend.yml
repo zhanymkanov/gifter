@@ -45,7 +45,7 @@ jobs:
 
     - name: Pytest with flake8
       run: |
-        pytest --flake8 --cov=app
+        pytest --flake8
       env:
         ALLOWED_HOSTS: ${{ secrets.ALLOWED_HOSTS }}
         DATABASE_URL: ${{ secrets.DATABASE_URL }}
