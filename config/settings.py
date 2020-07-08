@@ -29,6 +29,7 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "rest_framework",
+    "versatileimagefield",
 ]
 
 LOCAL_APPS = [
@@ -118,3 +119,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+VERSATILEIMAGEFIELD_SETTINGS = {
+    # Images should be pre-generated on Production environment
+    "create_images_on_demand": config("CREATE_IMAGES_ON_DEMAND", DEBUG)
+}
