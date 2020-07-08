@@ -25,11 +25,14 @@ class Product(SeoModel):
     name = models.CharField(max_length=64, unique=True)
     slug = models.SlugField(max_length=64, unique=True)
     is_active = models.BooleanField(default=True)
-    in_stock = models.PositiveIntegerField(blank=True, null=True)
+    in_stock = models.PositiveSmallIntegerField(blank=True, null=True)
+    price = models.PositiveIntegerField()
     description = models.TextField()
     specification = JSONField()
     categories = models.ManyToManyField(Category)
-    vendor = models.ForeignKey(Vendor, on_delete=models.SET_NULL, null=True)
+    vendor = models.ForeignKey(
+        Vendor, on_delete=models.SET_NULL, null=True, related_name="products"
+    )
 
     def __str__(self) -> str:
         return self.name
