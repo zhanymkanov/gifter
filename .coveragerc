@@ -1,2 +1,11 @@
 [report]
 exclude_lines = # noqa
+fail_under = 80
+omit =
+    apps/*/migrations/*
+    apps/*/apps.py
+    config/manage.py
+    config/environ.py
+    config/settings.py
+    config/asgi.py
+    config/wsgi.py
