@@ -1,7 +1,7 @@
 from rest_framework import permissions
 from rest_framework.generics import ListAPIView
 
-from ..models import Category, Product
+from apps.product.models import Category, Product
 from .serializers import CategoryListSerializer, ProductListSerializer
 
 
