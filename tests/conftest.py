@@ -1,7 +1,7 @@
 import pytest
 from rest_framework.test import APIClient
 
-from .factories import CategoryFactory, ProductFactory
+from .factories import CategoryFactory, GiftFactory
 
 
 @pytest.fixture()
@@ -15,5 +15,5 @@ def category():
 
 
 @pytest.fixture()
-def product():
-    return ProductFactory.create()
+def gift():
+    return GiftFactory.create()

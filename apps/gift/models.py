@@ -22,7 +22,7 @@ class Category(SeoModel):
 
 
 class Image(models.Model):
-    image = VersatileImageField(upload_to="products", ppoi_field="ppoi")
+    image = VersatileImageField(upload_to="gifts", ppoi_field="ppoi")
     ppoi = PPOIField()
     name = models.CharField(max_length=128, unique=True)
     alt = models.CharField(max_length=128, blank=True)
@@ -31,7 +31,7 @@ class Image(models.Model):
         return self.name
 
 
-class Product(SeoModel):
+class Gift(SeoModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=64, unique=True)
     slug = models.SlugField(max_length=64, unique=True)
@@ -42,9 +42,9 @@ class Product(SeoModel):
     specification = JSONField()
     categories = models.ManyToManyField(Category)
     vendor = models.ForeignKey(
-        Vendor, on_delete=models.SET_NULL, null=True, related_name="products"
+        Vendor, on_delete=models.SET_NULL, null=True, related_name="gifts"
     )
-    images = models.ManyToManyField(Image, related_name="product")
+    images = models.ManyToManyField(Image, related_name="gifts")
 
     def __str__(self) -> str:
         return self.name

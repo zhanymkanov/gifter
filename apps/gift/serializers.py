@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from apps.product.models import Category, Product
+from .models import Category, Gift
 
 
 class CategoryListSerializer(serializers.ModelSerializer):
@@ -9,7 +9,7 @@ class CategoryListSerializer(serializers.ModelSerializer):
         fields = ["name", "slug"]
 
 
-class ProductListSerializer(serializers.ModelSerializer):
+class GiftListSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Product
+        model = Gift
         exclude = ["id"]

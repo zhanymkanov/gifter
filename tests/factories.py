@@ -1,6 +1,6 @@
 import factory
 
-from apps.product.models import Category, Image, Product
+from apps.gift.models import Category, Gift, Image
 from apps.vendor.models import Vendor
 
 
@@ -28,9 +28,9 @@ class VendorFactory(factory.DjangoModelFactory):
     slug = factory.Faker("slug")
 
 
-class ProductFactory(factory.DjangoModelFactory):
+class GiftFactory(factory.DjangoModelFactory):
     class Meta:
-        model = Product
+        model = Gift
 
     @factory.post_generation
     def categories(self, create, extracted, **kwargs):
