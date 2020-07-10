@@ -8,7 +8,7 @@ class CategoryFactory(factory.DjangoModelFactory):
     class Meta:
         model = Category
 
-    name = factory.Faker("name")
+    name = factory.Faker("word")
     slug = factory.Faker("slug")
 
 
