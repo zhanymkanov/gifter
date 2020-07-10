@@ -1,7 +1,7 @@
 import pytest
 from rest_framework.test import APIClient
 
-from apps.product.models import Category
+from apps.product.models import Category, Product
 from tests.factories import ProductFactory
 
 
@@ -20,3 +20,10 @@ def test_category_products_list(client: APIClient, category: Category) -> None:
 
     assert resp.status_code == 200
     assert len(resp.data) == batch_size
+
+
+@pytest.mark.django_db
+def test_product_details(client: APIClient, product: Product) -> None:
+    resp = client.get(f"/gift/{product.slug}/")
+
+    assert resp.status_code == 200
