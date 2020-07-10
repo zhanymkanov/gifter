@@ -1,11 +1,12 @@
 import pytest
 
-from apps.product.models import Category
+from tests.factories import CategoryFactory, ImageFactory, ProductFactory, VendorFactory
 
 
 @pytest.mark.django_db
-def test_model_category():
-    category = Category(
-        name="test", slug="test", seo_title="test", seo_description="test"
-    )
-    assert str(category) == "test"
+@pytest.mark.parametrize(
+    "model_factory", (CategoryFactory, ImageFactory, VendorFactory, ProductFactory,)
+)
+def test_models_str(model_factory):
+    model_obj = model_factory.create()
+    assert str(model_obj) == model_obj.name
