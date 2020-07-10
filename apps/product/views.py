@@ -16,5 +16,5 @@ class CategoryProductsList(ListAPIView):
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
-        category = Category.objects.get(slug=self.kwargs["category"])
+        category = Category.objects.get(slug=self.kwargs["slug"])
         return Product.objects.filter(categories__id=category.id, is_active=True)
