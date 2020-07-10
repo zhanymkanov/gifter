@@ -24,7 +24,7 @@ class Category(SeoModel):
 class Image(models.Model):
     image = VersatileImageField(upload_to="products", ppoi_field="ppoi")
     ppoi = PPOIField()
-    name = models.CharField(max_length=128)
+    name = models.CharField(max_length=128, unique=True)
     alt = models.CharField(max_length=128, blank=True)
 
     def __str__(self) -> str:
