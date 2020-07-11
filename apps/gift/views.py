@@ -30,7 +30,6 @@ class GiftDetails(RetrieveAPIView):
     serializer_class = GiftListSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Gift.objects.filter(is_active=True)
-    lookup_field = "slug"
 
     def get_object(self):
         try:
