@@ -9,11 +9,12 @@ from tests.factories import GiftFactory
 @pytest.mark.django_db
 def test_categories_list(client: APIClient) -> None:
     resp = client.get("/categories/")
+
     assert resp.status_code == 200
 
 
 @pytest.mark.django_db
-def test_category_products_list(client: APIClient, category: Category) -> None:
+def test_category_gifts_list(client: APIClient, category: Category) -> None:
     batch_size = 3
     GiftFactory.create_batch(batch_size, categories=(category,))
 
@@ -24,7 +25,7 @@ def test_category_products_list(client: APIClient, category: Category) -> None:
 
 
 @pytest.mark.django_db
-def test_category_products_not_exists(client: APIClient) -> None:
+def test_category_not_exists(client: APIClient) -> None:
     resp = client.get("/categories/NOT-EXISTS/")
     resp_json = resp.json()
 
