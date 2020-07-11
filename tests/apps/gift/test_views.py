@@ -40,7 +40,9 @@ def test_gift_details(client: APIClient, gift: Gift) -> None:
 
 
 @pytest.mark.django_db
-def test_gift_details(client: APIClient, gift: Gift) -> None:
-    resp = client.get(f"/gifts/{gift.slug}/")
+def test_gift_not_exists(client: APIClient) -> None:
+    resp = client.get("/gifts/NOT-EXISTS/")
+    resp_json = resp.json()
 
-    assert resp.status_code == 200
+    assert resp.status_code == 404
+    assert resp_json["detail"] == ErrorMessage.GIFT_DOES_NOT_EXIST
