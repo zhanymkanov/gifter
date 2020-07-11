@@ -4,17 +4,17 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView
 
 from ..constants import ErrorMessage
 from .models import Category, Gift
-from .serializers import CategoryListSerializer, GiftListSerializer
+from .serializers import CategorySerializer, GiftSerializer
 
 
 class CategoriesList(ListAPIView):
-    serializer_class = CategoryListSerializer
+    serializer_class = CategorySerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Category.objects.filter(is_active=True)
 
 
 class CategoryGiftsList(ListAPIView):
-    serializer_class = GiftListSerializer
+    serializer_class = GiftSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
     def get_queryset(self):
@@ -27,7 +27,7 @@ class CategoryGiftsList(ListAPIView):
 
 
 class GiftDetails(RetrieveAPIView):
-    serializer_class = GiftListSerializer
+    serializer_class = GiftSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
     queryset = Gift.objects.filter(is_active=True)
 
