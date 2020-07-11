@@ -33,7 +33,7 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    "apps.product",
+    "apps.gift",
     "apps.seo",
     "apps.vendor",
 ]
@@ -92,7 +92,10 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
-REST_FRAMEWORK = {"DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAdmin"]}
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAdminUser"],
+    "DATETIME_FORMAT": "%Y-%m-%dT%H:%M:%S.%fZ",
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
