@@ -35,7 +35,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "apps.gift",
-    "apps.seo",
+    "apps.order",
     "apps.vendor",
 ]
 

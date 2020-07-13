@@ -1,3 +1,4 @@
+wheel
 django-allauth
 djangorestframework
 django-filter
@@ -5,3 +6,4 @@ dj_database_url
 psycopg2-binary
 python-decouple
 django-versatileimagefield
+django-phonenumber-field[phonenumberslite]
