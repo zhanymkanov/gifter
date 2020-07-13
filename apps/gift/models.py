@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import JSONField
 from django.db import models
 from versatileimagefield.fields import PPOIField, VersatileImageField
 
-from apps.seo.models import SeoModel
+from apps.models import SeoModel
 from apps.vendor.models import Vendor
 
 
