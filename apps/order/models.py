@@ -42,7 +42,7 @@ class Order(ContactsModel):
         blank=True,
         on_delete=models.SET_NULL,
     )
-    products = models.ManyToManyField(Gift)
+    products = models.ManyToManyField(Gift, related_name="+")
 
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)
