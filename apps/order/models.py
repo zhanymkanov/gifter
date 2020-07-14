@@ -26,7 +26,7 @@ class Order(ContactsModel):
         PAID = 10, "PAID"
 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
-    number = models.CharField(max_length=16, unique=True, editable=False,)
+    number = models.CharField(max_length=16, unique=True, editable=False, blank=True)
     status = models.CharField(
         max_length=64, choices=Status.choices, default=Status.NEW, editable=False,
     )
