@@ -14,11 +14,11 @@ class Order(ContactsModel):
         NEW = "NEW"
 
         PROCESS_IN_PROGRESS = "PROCESS_IN_PROGRESS"
-        PROCESS_OK = "PROCESS_OK"
+        PROCESS_OK = "PROCESS_OK", "Process OK"
         PROCESS_ERROR = "PROCESS_ERROR"
 
         CANCEL_IN_PROGRESS = "CANCEL_IN_PROGRESS"
-        CANCEL_OK = "CANCEL_OK"
+        CANCEL_OK = "CANCEL_OK", "Cancel OK"
         CANCEL_ERROR = "CANCEL_ERROR"
 
     class PaymentStatus(models.TextChoices):
