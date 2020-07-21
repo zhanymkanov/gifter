@@ -1,7 +1,7 @@
 import pytest
 
-from apps.user.models import User
 from apps.user.constants import ErrorMessage
+from apps.user.models import User
 
 
 @pytest.mark.django_db
@@ -27,7 +27,9 @@ def test_createsuperuser():
 def test_createsuperuser_fail_is_staff():
     with pytest.raises(ValueError) as exc:
         User.objects.create_superuser(
-            email="test@test.com", password="password", is_staff=False,
+            email="test@test.com",
+            password="password",
+            is_staff=False,
             is_superuser=True,
         )
 
@@ -38,7 +40,9 @@ def test_createsuperuser_fail_is_staff():
 def test_createsuperuser_fail_is_superuser():
     with pytest.raises(ValueError) as exc:
         User.objects.create_superuser(
-            email="test@test.com", password="password", is_staff=True,
+            email="test@test.com",
+            password="password",
+            is_staff=True,
             is_superuser=False,
         )
 
