@@ -8,6 +8,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("api/auth/", include("rest_framework.urls")),
     path("", include("apps.gift.urls")),
+    path("", include("apps.order.urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

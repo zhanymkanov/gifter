@@ -14,11 +14,11 @@ class Order(ContactsModel):
         NEW = "NEW"
 
         PROCESS_IN_PROGRESS = "PROCESS_IN_PROGRESS"
-        PROCESS_OK = "PROCESS_OK"
+        PROCESS_OK = "PROCESS_OK", "Process OK"
         PROCESS_ERROR = "PROCESS_ERROR"
 
         CANCEL_IN_PROGRESS = "CANCEL_IN_PROGRESS"
-        CANCEL_OK = "CANCEL_OK"
+        CANCEL_OK = "CANCEL_OK", "Cancel OK"
         CANCEL_ERROR = "CANCEL_ERROR"
 
     class PaymentStatus(models.TextChoices):
@@ -26,7 +26,7 @@ class Order(ContactsModel):
         PAID = 10, "PAID"
 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
-    number = models.CharField(max_length=16, unique=True, editable=False,)
+    number = models.CharField(max_length=16, unique=True, editable=False, blank=True)
     status = models.CharField(
         max_length=64, choices=Status.choices, default=Status.NEW, editable=False,
     )
@@ -42,7 +42,7 @@ class Order(ContactsModel):
         blank=True,
         on_delete=models.SET_NULL,
     )
-    products = models.ManyToManyField(Gift)
+    products = models.ManyToManyField(Gift, related_name="+")
 
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
     updated_at = models.DateTimeField(auto_now=True, editable=False)

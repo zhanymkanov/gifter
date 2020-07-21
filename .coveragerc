@@ -1,6 +1,6 @@
 [report]
 exclude_lines = # noqa
-fail_under = 80
+fail_under = 95
 omit =
     apps/*/migrations/*
     apps/*/apps.py
