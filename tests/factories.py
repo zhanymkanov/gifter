@@ -1,6 +1,8 @@
 import factory
+from django.conf import settings
 
 from apps.gift.models import Category, Gift, Image
+from apps.order.models import Order
 from apps.vendor.models import Vendor
 
 
@@ -56,3 +58,22 @@ class GiftFactory(factory.DjangoModelFactory):
     description = factory.Faker("text")
     specification = {"location": "Secret"}
     vendor = factory.SubFactory(VendorFactory)
+
+
+class OrderFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = Order
+
+    contact_name = factory.Faker("name")
+    contact_phone = factory.Faker("phone_number")
+    email = factory.Faker("email")
+    city = "Нур-Султан"
+
+
+class UserFactory(factory.DjangoModelFactory):
+    class Meta:
+        model = settings.AUTH_USER_MODEL
+
+    email = factory.Faker("email")
+    username = factory.Faker("word")
+    password = factory.Faker("word")
