@@ -40,8 +40,8 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             user=validated_data.get("user"),
             shipping_address=validated_data.get("shipping_address", ""),
             number=Order.generate_number(),
+            total=sum(p.price for p in validated_data["products"]),
         )
-        order.total = sum(p.price for p in validated_data["products"])
         order.save()
         order.products.set(validated_data["products"])
         return order
