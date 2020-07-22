@@ -12,6 +12,6 @@ class OrderCreate(CreateAPIView):
 
 class OrderDetails(RetrieveAPIView):
     serializer_class = OrderCreateSerializer
-    permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.AllowAny,)
     queryset = Order.objects.all()
     lookup_field = "uuid"
