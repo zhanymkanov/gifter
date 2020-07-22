@@ -9,7 +9,7 @@ User = settings.AUTH_USER_MODEL
 
 @pytest.mark.django_db
 def test_order_create(
-        client: APIClient, order_dict_in: dict, order_dict_out: dict
+    client: APIClient, order_dict_in: dict, order_dict_out: dict
 ) -> None:
     resp = client.post("/orders/", data=order_dict_in)
     resp_json = resp.json()
