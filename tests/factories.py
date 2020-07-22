@@ -10,7 +10,7 @@ class CategoryFactory(factory.DjangoModelFactory):
     class Meta:
         model = Category
 
-    name = factory.Faker("word")
+    name = factory.Faker("name")
     slug = factory.Faker("slug")
 
 
@@ -26,7 +26,7 @@ class VendorFactory(factory.DjangoModelFactory):
     class Meta:
         model = Vendor
 
-    name = factory.Faker("word")
+    name = factory.Faker("name")
     slug = factory.Faker("slug")
 
 
@@ -52,7 +52,7 @@ class GiftFactory(factory.DjangoModelFactory):
             for image in extracted:
                 self.images.add(image)
 
-    name = factory.Faker("word")
+    name = factory.Faker("name")
     slug = factory.Faker("slug")
     price = 15_000
     description = factory.Faker("text")
@@ -75,5 +75,4 @@ class UserFactory(factory.DjangoModelFactory):
         model = settings.AUTH_USER_MODEL
 
     email = factory.Faker("email")
-    username = factory.Faker("word")
     password = factory.Faker("word")
