@@ -19,6 +19,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Order
         fields = (
+            "uuid",
             "contact_name",
             "contact_phone",
             "city",
