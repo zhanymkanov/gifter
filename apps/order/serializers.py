@@ -8,10 +8,13 @@ from .models import Order
 
 
 class OrderCreateSerializer(serializers.ModelSerializer):
-    products = serializers.PrimaryKeyRelatedField(
-        queryset=Gift.objects.filter(is_active=True).all(), many=True
+    products = serializers.SlugRelatedField(
+        queryset=Gift.objects.filter(is_active=True).all(),
+        many=True,
+        slug_field="slug",
     )
     user = serializers.PrimaryKeyRelatedField(read_only=True)
+    total = serializers.IntegerField(read_only=True)
 
     class Meta:
         model = Order
@@ -21,6 +24,7 @@ class OrderCreateSerializer(serializers.ModelSerializer):
             "city",
             "shipping_address",
             "email",
+            "total",
             "user",
             "products",
         )
