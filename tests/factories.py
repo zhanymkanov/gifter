@@ -68,6 +68,7 @@ class OrderFactory(factory.DjangoModelFactory):
     contact_phone = factory.Faker("phone_number")
     email = factory.Faker("email")
     city = "Нур-Султан"
+    total = 0
 
 
 class UserFactory(factory.DjangoModelFactory):

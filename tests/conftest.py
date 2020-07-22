@@ -3,7 +3,7 @@ from typing import List
 import pytest
 from rest_framework.test import APIClient
 
-from .factories import CategoryFactory, Gift, GiftFactory, UserFactory
+from .factories import CategoryFactory, Gift, GiftFactory, OrderFactory, UserFactory
 
 
 @pytest.fixture()
@@ -29,6 +29,11 @@ def gifts_list():
 @pytest.fixture()
 def user():
     return UserFactory.create()
+
+
+@pytest.fixture()
+def order():
+    return OrderFactory.create()
 
 
 @pytest.fixture()
