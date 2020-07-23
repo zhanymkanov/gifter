@@ -37,7 +37,6 @@ class CategoryGiftsList(ListAPIView):
 class GiftDetails(RetrieveAPIView):
     serializer_class = GiftSerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    queryset = Gift.objects.filter(is_active=True)
 
     def get_object(self):
-        return Gift.objects.get_by_slug(self.kwargs["slug"])
+        return Gift.objects.active().get_by_slug(self.kwargs["slug"])
