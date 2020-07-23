@@ -46,6 +46,16 @@ class Image(models.Model):
         return self.name
 
 
+class GiftQueryset(ActiveBaseQueryset):
+    def get_by_slug(self, slug):
+        try:
+            gift = self.get(slug=slug)
+        except Gift.DoesNotExist:
+            raise NotFound(detail=ErrorMessage.GIFT_DOES_NOT_EXIST)
+
+        return gift
+
+
 class Gift(SeoModel):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=64, unique=True)
@@ -60,6 +70,8 @@ class Gift(SeoModel):
         Vendor, on_delete=models.SET_NULL, null=True, related_name="gifts"
     )
     images = models.ManyToManyField(Image, related_name="gifts")
+
+    objects = GiftQueryset.as_manager()
 
     def __str__(self) -> str:
         return self.name
