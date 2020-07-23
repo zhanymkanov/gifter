@@ -1,7 +1,7 @@
 import pytest
 from rest_framework.test import APIClient
 
-from apps.constants import ErrorMessage
+from apps.gift.constants import ErrorMessage
 from apps.gift.models import Category, Gift
 from tests.factories import GiftFactory
 

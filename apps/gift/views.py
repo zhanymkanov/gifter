@@ -1,9 +1,7 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters, permissions
-from rest_framework.exceptions import NotFound
 from rest_framework.generics import ListAPIView, RetrieveAPIView
 
-from ..constants import ErrorMessage
 from .filters import GiftFilter
 from .models import Category, Gift
 from .serializers import CategorySerializer, GiftSerializer
@@ -12,7 +10,7 @@ from .serializers import CategorySerializer, GiftSerializer
 class CategoriesList(ListAPIView):
     serializer_class = CategorySerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
-    queryset = Category.objects.filter(is_active=True)
+    queryset = Category.objects.active()
 
 
 class CategoryGiftsList(ListAPIView):
