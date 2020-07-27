@@ -10,25 +10,35 @@ from apps.models import ContactsModel
 
 
 class Order(ContactsModel):
-    class Status(models.TextChoices):
-        NEW = "NEW"
+    class DeliveryStatus(models.TextChoices):
+        NO_DELIVERY = 0, "NO_DELIVERY"
+        DELIVERY_NEW = 1, "DELIVERY_NEW"
+        DELIVERY_IN_PROGRESS = 10, "DELIVERY_IN_PROGRESS"
+        DELIVERY_DONE = 20, "DELIVERY_DONE"
+        DELIVERY_FAILED = 40, "DELIVERY_FAILED"
 
-        PROCESS_IN_PROGRESS = "PROCESS_IN_PROGRESS"
-        PROCESS_OK = "PROCESS_OK", "Process OK"
-        PROCESS_ERROR = "PROCESS_ERROR"
-
-        CANCEL_IN_PROGRESS = "CANCEL_IN_PROGRESS"
-        CANCEL_OK = "CANCEL_OK", "Cancel OK"
-        CANCEL_ERROR = "CANCEL_ERROR"
+    class EmailDeliveryStatus(models.TextChoices):
+        EMAIL_DELIVERY_NEW = 1, "EMAIL_DELIVERY_NEW"
+        EMAIL_DELIVERY_DONE = 20, "EMAIL_DELIVERY_DONE"
+        EMAIL_DELIVERY_FAILED = 40, "EMAIL_DELIVERY_FAILED"
 
     class PaymentStatus(models.TextChoices):
         PENDING = 0, "PENDING"
-        PAID = 10, "PAID"
+        PAID = 20, "PAID"
 
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     number = models.CharField(max_length=16, unique=True, editable=False, blank=True)
-    status = models.CharField(
-        max_length=64, choices=Status.choices, default=Status.NEW, editable=False,
+    delivery_status = models.CharField(
+        max_length=64,
+        choices=DeliveryStatus.choices,
+        default=DeliveryStatus.NO_DELIVERY,
+        editable=False,
+    )
+    email_delivery_status = models.CharField(
+        max_length=64,
+        choices=EmailDeliveryStatus.choices,
+        default=EmailDeliveryStatus.EMAIL_DELIVERY_NEW,
+        editable=False,
     )
     payment_status = models.PositiveSmallIntegerField(
         choices=PaymentStatus.choices, default=PaymentStatus.PENDING, editable=False,

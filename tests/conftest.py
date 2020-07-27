@@ -37,7 +37,7 @@ def order():
 
 
 @pytest.fixture()
-def order_dict_in(gifts_list: List[Gift]):
+def order_payload(gifts_list: List[Gift]):
     return {
         "contact_name": "Bob",
         "contact_phone": "+77071234567",
