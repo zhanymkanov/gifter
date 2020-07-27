@@ -17,8 +17,8 @@ class SeoModel(models.Model):
     class Meta:
         abstract = True
 
-    seo_title = models.CharField(max_length=70, blank=True, null=True)
-    seo_description = models.CharField(max_length=300, blank=True, null=True)
+    seo_title = models.CharField(max_length=70, blank=True)
+    seo_description = models.CharField(max_length=300, blank=True)
 
 
 class ActiveBaseQueryset(models.QuerySet):
