@@ -6,19 +6,28 @@ from .models import Order
 class OrderAdmin(admin.ModelAdmin):
     list_display = (
         "number",
-        "status",
+        "delivery_status",
+        "email_delivery_status",
         "payment_status",
         "created_at",
         "expires_at",
     )
     list_filter = (
-        "status",
+        "delivery_status",
+        "email_delivery_status",
         "payment_status",
     )
     search_fields = ("email", "contact_phone", "contact_name")
     ordering = ("-created_at",)
 
-    readonly_fields = ("uuid", "status", "payment_status", "number", "total")
+    readonly_fields = (
+        "uuid",
+        "delivery_status",
+        "email_delivery_status",
+        "payment_status",
+        "number",
+        "total",
+    )
 
 
 admin.site.register(Order, OrderAdmin)
