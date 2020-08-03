@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  gifter:
+    env_file:
+      - .env
+    build: .
+    volumes:
+      - ./:/proj
+    ports:
+      - 8001:8000
+    depends_on:
+      - db
+    command: python manage.py runserver 0.0.0.0:8000
+
+  db:
+    image: postgres:12.3
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    volumes:
+      - gifter_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+volumes:
+  gifter_data:
