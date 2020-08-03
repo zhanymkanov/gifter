@@ -1,4 +1,5 @@
 wheel
+django==3.0.*
 django-allauth
 djangorestframework
 django-filter
