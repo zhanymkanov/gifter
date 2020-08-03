@@ -24,7 +24,7 @@ docker-compose exec gifter python manage.py createsuperuser
 1. `docker-compose up`
 2. Go to localhost:8000/admin and authenticate
 3. Create some categories, gifts
-4. Play with DRF
+4. Play with DRF (django interface is supported, so just visit those pages, cURL is not a mandatory)
    - GET /categories 
    - GET /categories/slug
    - GET /gifts/slug
